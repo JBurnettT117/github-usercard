@@ -1,8 +1,23 @@
+const { default: axios } = require("axios");
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+function getUserData(userID) {
+  let response;
+  axios.get(`https://api.github.com/users/${userID}`)
+ .then(result => {
+  console.log(cardMaker(result));
+  
+ })
+ .catch(err => {
+  console.error(err);
+ })
+ .finally(() => console.log("loading complete"));
+}
+
+getUserData("JBurnettT117")
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -49,6 +64,50 @@ const followersArray = [];
       </div>
     </div>
 */
+function cardMaker(response) {
+  console.log(response);
+
+  const card = document.createElement("div");
+  const img = document.createElement("img");
+  const info = document.createElement("div");
+  const name = document.createElement("h3");
+  const username = document.createElement("p");
+  const location = document.createElement("p");
+  const profile = document.createElement("p");
+  const address = document.createElement("a");
+  const followers = document.createElement("p");
+  const following = document.createElement("p");
+  const bio = document.createElement("p");
+
+  card.classList.add("card");
+  info.classList.add("card-info");
+  name.classList.add("name");
+  username.classList.add("username");
+
+  card.appendChild(img);
+  card.appendChild(info);
+
+  info.appendChild(name);
+  info.appendChild(username);
+  info.appendChild(location);
+  info.appendChild(profile);
+  info.appendChild(followers);
+  info.appendChild(following);
+  info.appendChild(bio);
+
+  profile.appendChild(address);
+
+  img.src = `${response.data.avatar_url}`;
+  name.textContent = `${response.data.name}`;
+  location.textContent = `${response.data.location}`;
+  address.textContent = `${response.data.html_url}`
+  
+
+  return card;
+}
+
+
+
 
 /*
   List of LS Instructors Github username's:
