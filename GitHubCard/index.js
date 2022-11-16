@@ -43,7 +43,11 @@ function getUserData(userID) {
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ["JBurnettT117", "tetondan", "dustinmyers", "justsml","luishrd", "bigknell"];
+
+followersArray.forEach(element => {
+  getUserData(element);
+});
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
@@ -110,9 +114,12 @@ function cardMaker(response) {
   return card;
 }
 
-getUserData("JBurnettT117");
-getUserData("tetondan");
-
+// getUserData("JBurnettT117");
+// getUserData("tetondan");
+// getUserData("dustinmyers");
+// getUserData("justsml");
+// getUserData("luishrd");
+// getUserData("bigknell");
 
 /*
   List of LS Instructors Github username's:
