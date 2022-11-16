@@ -17,7 +17,7 @@ function getUserData(userID) {
  .finally(() => console.log("loading complete"));
 }
 
-getUserData("JBurnettT117")
+
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -100,13 +100,18 @@ function cardMaker(response) {
   img.src = `${response.data.avatar_url}`;
   name.textContent = `${response.data.name}`;
   location.textContent = `${response.data.location}`;
-  address.textContent = `${response.data.html_url}`
-  
+  address.textContent = `${response.data.html_url}`;
+  followers.textContent = `${response.data.followers}`;
+  following.textContent = `${response.data.following}`;
+  bio.textContent = `${response.data.bio}`;
+
+  document.querySelector(".cards").appendChild(card);
 
   return card;
 }
 
-
+getUserData("JBurnettT117");
+getUserData("tetondan");
 
 
 /*
